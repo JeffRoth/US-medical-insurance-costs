@@ -33,7 +33,7 @@ Given the observations made during the EDA, it is clear that there is a non-line
 
 ![Predicted vs actual charges for linear regression model](LR_model.png "Predicted vs actual charges for linear regression model")
 
-Given the observation of non-linear behavior, I next tried a series of decision-tree methods (Random Forest and XGBoost).  Both of these methods worked quite well and handling both smokers and non-smokers.  Ultimately, I decided to use a simple decision tree regression. Random Forest and XGBoost are ensemble methods, meaning that an ensemble of decision trees are created, and then the final answer is derived from an average of these tree's results.  However, for the purpose of calculating health insurance costs, there is value in having a single tree which can be used to audit an individual's predicted premiums, thus lending transparency to the process. Below are the predicted vs actual costs for the validation data:
+Given the observation of non-linear behavior, I next tried a series of decision-tree methods (Random Forest and XGBoost).  Both of these methods worked quite well in handling both smokers and non-smokers.  Ultimately, I decided to use a simple decision tree regression. Random Forest and XGBoost are ensemble methods, meaning that an ensemble of decision trees are created, and then the final answer is derived from an average of these tree's results.  However, for the purpose of calculating health insurance costs, there is value in having a single tree which can be used to audit an individual's predicted premiums, thus lending transparency to the process. Below are the predicted vs actual costs for the validation data:
 
 ![Predicted vs actual charges for decision tree on validation data](DT_validation_data.png "Predicted vs actual charges for decision tree on validation data")
 
@@ -43,7 +43,7 @@ Plotted below are the predicted vs actual costs for the training data:
 
 The decision tree methods did a good job of accurately predicting costs for the majority of the dataset, however there is a subset of the data which is not well described by the model (costs are under-predicted for this sub-population). Coloring the data by each of the available features does not reveal any particular pattern to this sub-population, suggesting that there is another factor at play which is not one of the features captured in this dataset. This is likely the third trend observed in the "Charges vs. Age by Smoking Status" plot observed in the EDA, and is composed of both smokers and non-smokers.
 
-A particular advantage of the decision tree methods is the ability to see the decision tree which was created in order to see which factors are most impactful:
+A particular advantage of the decision tree methods is the ability to see the decision tree which was created in order to see which factors are most impactful. Based on the decision tree, it is clear that whether or not the individual is a smoker is the greatest driver in cost. If they are a smoker, then BMI has a large impact on cost.  If they are not a smoker, then age is the biggest driver:
 
 ![Decision Tree](decision_tree.png "Decision Tree")
 
