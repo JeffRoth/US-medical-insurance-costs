@@ -23,7 +23,7 @@ Plotting the medical charges vs age, and colored by smoking status revealed that
 
 ![Charges vs Age by smoking status](charges_vs_age_by_smoker.png "Charges vs Age by Smoking Status")
 
-Plotting medical charges by BMI, and colored by smoking status revealed that BMI is not a strong driver of medical costs for non-smokers, but has a strong relationship to costs for smokers:
+Plotting medical charges by BMI, and colored by smoking status revealed that BMI is not a strong driver of medical costs for non-smokers, but has a strong relationship to costs for smokers, with a distinct increase in costs over a BMI of 30:
 
 ![Charges vs BMI by smoking status](charges_vs_bmi_by_smoker.png "Chargest vs BMI by Smoking Status")
 
@@ -33,17 +33,19 @@ Given the observations made during the EDA, it is clear that there is a non-line
 
 ![Predicted vs actual charges for linear regression model](LR_model.png "Predicted vs actual charges for linear regression model")
 
-Given the observation of non-linear behavior, I next tried a series of decision-tree methods (Random Forest and XGBoost).  Both of these methods worked quite well and handling both smokers and non-smokers.  Ultimately, I decided to use a simple decision tree regression. Random Forest and XGBoost are ensemble methods, meaning that an ensemble of decision trees are created, and then the final answer is derived from an average of these tree's results.  However, for the purpose of calculating health insurance costs, there is value in having a single tree which can be used to audit an individual's predicted premiums, thus lending transparency to the process. Below are the predicted vs actual costs for the validation data and training data:
+Given the observation of non-linear behavior, I next tried a series of decision-tree methods (Random Forest and XGBoost).  Both of these methods worked quite well and handling both smokers and non-smokers.  Ultimately, I decided to use a simple decision tree regression. Random Forest and XGBoost are ensemble methods, meaning that an ensemble of decision trees are created, and then the final answer is derived from an average of these tree's results.  However, for the purpose of calculating health insurance costs, there is value in having a single tree which can be used to audit an individual's predicted premiums, thus lending transparency to the process. Below are the predicted vs actual costs for the validation data:
 
-![Predicted vs actual charges for decision tree on validation data](DT_validation_data.png), "Predicted vs actual charges for decision tree on validation data")
+![Predicted vs actual charges for decision tree on validation data](DT_validation_data.png) "Predicted vs actual charges for decision tree on validation data")
 
-![Predicted vs actual charges for decision tree on training data](DT_training_data.png), "Predicted vs actual charges for decision tree on training data")
+Plotted below are the predicted vs actual costs for the training data:
+
+![Predicted vs actual charges for decision tree on training data](DT_training_data.png) "Predicted vs actual charges for decision tree on training data")
 
 The decision tree methods did a good job of accurately predicting costs for the majority of the dataset, however there is a subset of the data which is not well described by the model (costs are under-predicted for this sub-population). Coloring the data by each of the available features does not reveal any particular pattern to this sub-population, suggesting that there is another factor at play which is not one of the features captured in this dataset. This is likely the third trend observed in the "Charges vs. Age by Smoking Status" plot observed in the EDA, and is composed of both smokers and non-smokers.
 
 A particular advantage of the decision tree methods is the ability to see the decision tree which was created in order to see which factors are most impactful:
 
-![Decision Tree](decision_tree.png, "Decision Tree")
+![Decision Tree](decision_tree.png) "Decision Tree")
 
 For this example, I used a tree that was 5 layers deep, however one could opt for a simpler tree at the sacrifice of some accuracy (bias / variance tradeoff).
 
