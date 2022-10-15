@@ -47,9 +47,7 @@ A particular advantage of the decision tree methods is the ability to see the de
 
 ![Decision Tree](decision_tree.png "Decision Tree")
 
-For this example, I used a tree that was 5 layers deep, however one could opt for a simpler tree at the sacrifice of some accuracy (bias / variance tradeoff).
-
-
+For this example, I used a tree that was 5 layers deep, which yielded an R-squared of 0.82, and a mean absolute error of $638, however one could opt for a simpler tree at the sacrifice of some accuracy (bias / variance tradeoff).
 
 
 
